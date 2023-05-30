@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <title>BodySense</title>
+</head>
+
+<body class="body">
+  <header class="header">
+    <div class="logo"><img src="assets/logo.jpg" alt="Logo">
+    </div>
+    <ul>
+      <li class="login"> <input class="home" type="submit" value="Home" (click)="home()"></li>
+      <li class="login"> <input class="logout" type="submit" value="Log Out" (click)="logout()"></li>
+    </ul>
+  </header>
+  <br>
+  <!-- RIGHT SECTION -->
+  <section id="main-right" class="main-right">
+    <div id="chatArea" class="chatArea h-100">
+      <div id="vista_mensajes" class="vista_mensajes ">
+        <p *ngFor="let message of messages" class="msj p-2"
+          [ngClass]="(usuarioLogeado == message.emisor)? 'enviado' : 'recibido'">
+          <span [innerHTML]="message.text"></span>
+          <img *ngIf="message.imagen" [src]="message.imagen" alt="Selected Image" width="110px" height="85px" >
+        </p>
+      </div>
+    </div>
+    <!-- typing area -->
+    <div id="typing-area" class="typing-area">
+      <!-- input form -->
+      <button class="attach-btn">
+        <label for="image">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-image"
+            viewBox="0 0 16 16">
+            <path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" />
+            <path
+              d="M2.002 1a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2h-12zm12 1a1 1 0 0 1 1 1v6.5l-3.777-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12V3a1 1 0 0 1 1-1h12z" />
+          </svg>
+          <input type="file" id="image" accept="image/*" value="imagen" name="imagen" multiple style="display: none;"
+            (change)="uploadImagen($event)">
+        </label>
+      </button>
+
+      <form class="writearea" (ngSubmit)="sendMessage()">
+        <input id="type-area" class="type-area" placeholder="Type something..." [(ngModel)]="newMessage"
+          [ngModelOptions]="{standalone: true}">
+      </form>
+      <!-- send btn -->
+      <button class="enviar" (click)="sendMessage()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="25" fill="currentColor" class="bi bi-send"
+          viewBox="0 0 16 16">
+          <path
+            d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+        </svg>
+      </button>
+    </div>
+  </section>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

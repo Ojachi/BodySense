@@ -1,0 +1,65 @@
+<head>
+    <title>Sing Up</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+</head>
+  <body class="align">
+  
+      <div class="login">
+    
+        <header class="login__header">
+            <h2><svg class="icon">
+              <use xlink:href="#icon-lock" />
+            </svg>Sing Up</h2>
+            <ul>
+              <li class="home" ><input class="button_home" type="submit" onclick="location.href=''" value="Home"></li>
+            </ul>
+        </header>
+
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="messageOk != null">
+          <strong>{{messageOk}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="cerrarAlert1()"></button>
+        </div>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert" *ngIf="messageErr != null">
+          <strong>{{messageErr}}</strong>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" (click)="cerrarAlert2()"></button>
+        </div>
+    
+        <form action="/submit" class="login__form" method="POST">
+            <div>
+                <label for="username">Username</label>
+                <input type="text" id="usernmae" name="username" placeholder="pepito21" [(ngModel)]="register.username">
+              </div>
+    
+          <div>
+            <label for="email">E-mail address</label>
+            <input type="email" id="email" name="email" placeholder="mail@address.com" [(ngModel)]="register.email">
+          </div>
+    
+          <div>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="password" [(ngModel)]="register.password">
+          </div>
+
+          <div>
+            <label for="neighborhood">neighborhood</label>
+            <input type="text" id="neighborhood" name="neighborhood" placeholder="Acacias" [(ngModel)]="register.neighborhood">
+          </div>
+          
+          <div>
+              <input class="button" type="submit" value="Sing up" (click)="singup()">
+          </div>
+    
+        </form>
+    
+      </div>
+    
+      <svg xmlns="http://www.w3.org/2000/svg" class="icons">
+    
+        <symbol id="icon-lock" viewBox="0 0 448 512">
+          <path d="M400 224h-24v-72C376 68.2 307.8 0 224 0S72 68.2 72 152v72H48c-26.5 0-48 21.5-48 48v192c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V272c0-26.5-21.5-48-48-48zm-104 0H152v-72c0-39.7 32.3-72 72-72s72 32.3 72 72v72z" />
+        </symbol>
+    
+      </svg>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+    </body>
+    
